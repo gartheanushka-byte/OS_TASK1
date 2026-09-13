@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Threaded Matrix Lab</title>
+<style>
+  :root {
+    --ink: #172033;
+    --panel: rgba(255,255,255,.88);
+    --line: #b7c1d3;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: system-ui, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(145deg, #d9f1ff, #f6fbff 45%, #e5e9ff);
+  }
+
+  header {
+    padding: 22px 18px 8px;
+    text-align: center;
+  }
+
+  h1 { margin: 0 0 6px; }
+  .subtitle { margin: 0; opacity: .75; }
+
+  .stage {
+    width: min(1100px, 94vw);
+    margin: 58px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .card {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--panel);
+    box-shadow: 0 12px 30px rgba(40,55,80,.12);
+  }
+
+  .card h2 { margin: 0 0 12px; text-align: center; }
+
+  .mini-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 42px);
+    gap: 4px;
+  }
+
+  .mini-grid span {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #8995aa;
+    border-radius: 7px;
+    background: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .operator {
+    font-size: 38px;
+    font-weight: 800;
+  }
+
+  .cloud {
+    position: absolute;
+    width: 110px;
+    height: 42px;
+    border-radius: 50px;
+    background: rgba(255,255,255,.8);
+    filter: blur(.2px);
+    animation: drift 12s linear infinite;
+  }
+
+  .cloud::before, .cloud::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  .cloud::before { width: 54px; height: 54px; left: 16px; top: -23px; }
+  .cloud::after { width: 68px; height: 68px; right: 12px; top: -34px; }
+
+  .cloud.one { top: 110px; left: -140px; }
+  .cloud.two { top: 260px; left: -180px; animation-delay: 5s; }
+
+  .worker {
+    position: absolute;
+    left: 4%;
+    top: 68%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-weight: 700;
+    animation: travel 6s ease-in-out infinite;
+  }
+
+  #status {
+    margin: 32px auto 0;
+    width: min(800px, 90vw);
+    text-align: center;
+    font-weight: 700;
+  }
+
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 280px)); }
+  }
+
+  @keyframes travel {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(42vw, -55px); }
+    100% { transform: translate(86vw, 0); }
+  }
+</style>
+</head>
+<body>
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+
+  <header>
+    <h1>Threaded Matrix Laboratory</h1>
+    <p class="subtitle">A visual model of independent multiplication contributions</p>
+  </header>
+
+  <main class="stage">
+    <section class="card">
+      <h2>Input A</h2>
+      <div class="mini-grid" id="left"></div>
+    </section>
+
+    <div class="operator">×</div>
+
+    <section class="card">
+      <h2>Input B</h2>
+      <div class="mini-grid" id="right"></div>
+    </section>
+
+    <div class="operator">→</div>
+
+    <section class="card">
+      <h2>Output</h2>
+      <div class="mini-grid" id="answer"></div>
+    </section>
+  </main>
+
+  <div class="worker" id="worker">Worker contribution: waiting</div>
+  <div id="status">Preparing independent multiplication tasks...</div>
+
+<script>
+  function populate(target) {
+    const area = document.getElementById(target);
+    for (let i = 0; i < 25; i++) {
+      const cell = document.createElement("span");
+      cell.textContent = 1 + Math.floor(Math.random() * 9);
+      area.appendChild(cell);
+    }
+  }
+
+  ["left", "right", "answer"].forEach(populate);
+
+  let cycle = 0;
+  setInterval(() => {
+    cycle += 1;
+    const row = cycle % 5;
+    const col = (cycle * 2) % 5;
+
+    document.getElementById("worker").textContent =
+      `Worker contribution: A[${row}][k] × B[k][${col}]`;
+
+    document.getElementById("status").textContent =
+      `Processing partial contribution ${cycle}; synchronized result updates are represented by the worker activity.`;
+  }, 700);
+</script>
+</body>
+</html>
