@@ -280,3 +280,13 @@ Through this task, the following concepts were explored:
 * Decomposition of matrix multiplication into independent tasks.
 * Difference between actual Python multithreading and browser-based visualization.
 
+## Output
+<img width="1160" height="600" alt="WhatsApp Image 2026-09-13 at 9 08 11 AM" src="https://github.com/user-attachments/assets/edf77f77-2d83-42ca-93ae-d101cdb8a1f8" />
+
+<img width="786" height="343" alt="WhatsApp Image 2026-09-13 at 9 08 12 AM" src="https://github.com/user-attachments/assets/82d92991-05a8-40eb-a435-e5aae965d2e5" />
+
+<img width="826" height="443" alt="WhatsApp Image 2026-09-13 at 9 08 12 AM (1)" src="https://github.com/user-attachments/assets/738deb8d-e4be-49ed-87e5-1956c22694ff" />
+
+
+
+
