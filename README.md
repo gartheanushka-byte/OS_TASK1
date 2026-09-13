@@ -10,7 +10,7 @@ This project demonstrates fundamental **Operating Systems multithreading concept
 
 ---
 
-## 📌 Objectives
+##  Objectives
 
 * Understand the concept of multithreading.
 * Create and manage multiple threads using Python.
@@ -23,7 +23,7 @@ This project demonstrates fundamental **Operating Systems multithreading concept
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 * **Python 3**
 * Python `threading` module
@@ -179,25 +179,8 @@ A[row][k] × B[k][column]
 
 The actual threaded matrix multiplication is implemented separately in Python.
 
----
 
-## 📂 Project Structure
-
-```text
-OS-TASK-1/
-│
-├── README.md
-│
-├── producer_consumer.py
-│
-├── matrix_multiplication.py
-│
-└── threaded_matrix_lab.html
-```
-
----
-
-## ▶️ How to Run
+##  How to Run
 
 ### Prerequisites
 
@@ -233,7 +216,7 @@ in any modern web browser.
 
 ---
 
-## 🔑 Key Concepts Demonstrated
+##  Key Concepts Demonstrated
 
 | Concept                 | Implementation             |
 | ----------------------- | -------------------------- |
@@ -253,7 +236,7 @@ in any modern web browser.
 
 ---
 
-## ✅ Advantages
+##  Advantages
 
 ### Producer–Consumer
 
@@ -273,7 +256,7 @@ in any modern web browser.
 
 ---
 
-## ⚠️ Limitations
+##  Limitations
 
 * Producer–Consumer uses only one producer and one consumer.
 * The producer and consumer process a fixed number of five items.
@@ -283,7 +266,7 @@ in any modern web browser.
 
 ---
 
-## 📚 Learning Outcomes
+##  Learning Outcomes
 
 Through this task, the following concepts were explored:
 
@@ -297,12 +280,3 @@ Through this task, the following concepts were explored:
 * Decomposition of matrix multiplication into independent tasks.
 * Difference between actual Python multithreading and browser-based visualization.
 
----
-
-## 📖 References
-
-1. Python Documentation – `threading` module
-2. Python Documentation – `queue` module
-3. Abraham Silberschatz, Peter B. Galvin and Greg Gagne – *Operating System Concepts*
-4. Andrew S. Tanenbaum and Herbert Bos – *Modern Operating Systems*
-5. Operating Systems course notes and laboratory material
